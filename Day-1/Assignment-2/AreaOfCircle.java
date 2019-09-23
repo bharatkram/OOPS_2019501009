@@ -14,7 +14,8 @@ public class AreaOfCircle {
      * @param radius, the radius of the circle
      * @return the area of the circle
      */
-    public static double areaOfCircle(double radius) {
+    public static double areaOfCircle(double r) {
+        return PI * r * r;
         //  Your code goes here....
     }
 
@@ -25,7 +26,8 @@ public class AreaOfCircle {
      * @param radius, the radius of the circle.
      * @return the perimeter of the circle.
      */
-    public static double perimeterOfCircle(double radius) {
+    public static double perimeterOfCircle(double r) {
+        return 2 * PI * r;
         //  Your code goes here....
     }
 }
