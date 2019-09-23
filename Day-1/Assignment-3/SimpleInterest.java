@@ -23,6 +23,6 @@
         //  Your code goes here....
         
         
-        return ((principle*numberOfYears*rateOfInterest)/100)
+        return (principle*numberOfYears*rateOfInterest)/100;
     }
  }
