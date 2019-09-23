@@ -15,7 +15,7 @@ public class EvenOrOdd {
         //  Your code goes here....
         //  
         if(n%2==0){
-            return true
+            return true;
         }
         return false;
     }
