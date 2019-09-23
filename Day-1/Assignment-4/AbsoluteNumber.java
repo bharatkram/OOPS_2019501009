@@ -19,5 +19,9 @@ public class AbsoluteNumber {
      */
     public static int abs(int n) {
         // Your code goes here....
+        if(n<0){
+            n = n * -1;
+        }
+        return n
     }
 }
