@@ -25,14 +25,18 @@
      */
     public static boolean posNeg(int a, int b, boolean negative) {
         // Your code goes here....
-        if (! negative){
-            if ((a>0 && b>0) || (a<0 && b<0)){
+        if (! negative)
+        {
+            if ((a>0 && b>0) || (a<0 && b<0))
+            {
                 return false;
             }
             return true;
         }
-        else{
-            if (a<0 && b<0){
+        else
+        {
+            if (a<0 && b<0)
+            {
                 return true;
             }
             return false;
