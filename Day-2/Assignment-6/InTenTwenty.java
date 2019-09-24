@@ -25,7 +25,17 @@
      * @return true if either of them is in the range of 10..20 inclusive and 
      * false otherwise.
      */
-    public static boolean in1020(int a, int b) {
+    public static boolean in1020(int a, int b)
+    {
         // Your code goes here....
+        if (a>=10 && a<=20)
+        {
+            return true;
+        }
+        else if(b>=10 && b<=20)
+        {
+            return true;
+        }
+        return false;
     }
 }
