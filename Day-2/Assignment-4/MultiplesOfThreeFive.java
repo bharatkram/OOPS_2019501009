@@ -22,6 +22,17 @@ public class MultiplesOfThreeFive {
      */
     public static boolean or35(int n) {
         // Your code goes here...
-
+        if (n%3 == 0)
+        {
+            return true;
+        }
+        else if(n%5 == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
