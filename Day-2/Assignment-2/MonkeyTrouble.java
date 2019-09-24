@@ -26,6 +26,10 @@ public class MonkeyTrouble {
      */
     public static boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
         // Your code goes here....
-
+        if ((aSmile && bSmile) || (!aSmile && !bSmile))
+        {
+            return true;
+        }
+        return false;
     }
 }
