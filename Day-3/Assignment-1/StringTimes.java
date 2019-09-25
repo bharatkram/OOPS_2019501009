@@ -1,5 +1,5 @@
 /**
- * Given a string and an integer value n, repeat the string and concatenate 
+ * Given a string and an integer value n, repeat the string and concatenate
  * to the resultant string n times.
  *
  * Input : Hi, 2
@@ -11,16 +11,15 @@
  * @author Bharat Ram Koppu
  */
 
-public class StringTimes {
+public final class StringTimes {
     /**
      * Empty constructor.
     */
-    public int StringTimes() {
+    private StringTimes() {
         // Empty constructor.
     }
     /**
-     * This method returns the String that is appending the String n 
-     * times
+     * This method returns the String that is appending the String n times.
      * @param  str the given String
      * @param  n   the integer
      * @return the String that is appended n times to the resultant Stirng
