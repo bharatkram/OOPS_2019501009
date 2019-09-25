@@ -26,20 +26,21 @@ public final class FrontTimes {
 
     /**
      * This method returns n copies of the front.
-     * @param str, the string to be considered.
-     * @param n, the non-negative integer value.
+     * @param str the string to be considered.
+     * @param n the non-negative integer value.
      * @return the n copies of the front string.
      */
     public static String frontTimes(final String str, final int n) {
         //  Your code goes here....
-        if (str.length() >= 3) {
-            String subStr = str.substring(0, 3);
+        final int len = 3;
+        if (str.length() >= len) {
+            String subStr = str.substring(0, len);
             String retStr = "";
             for (int i = 0; i < n; i++) {
                 retStr = retStr + subStr;
             }
         return retStr;
-        }else {
+        } else {
             String retStr = "";
             for (int i = 0; i < n; i++) {
                 retStr = retStr + str;
