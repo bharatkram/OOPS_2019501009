@@ -15,7 +15,7 @@ public class StringTimes {
     /**
      * Empty constructor.
     */
-    public void StringTimes() {
+    public int StringTimes() {
         // Empty constructor.
     }
     /**
