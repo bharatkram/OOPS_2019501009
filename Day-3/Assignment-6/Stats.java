@@ -89,12 +89,12 @@ public final class Stats {
                     count += 1;
                 }
             }
-            if (count > maxCount && i != maxCountNumber) {
+            if ((count > maxCount) && (i != maxCountNumber)) {
                 maxCount = count;
                 maxCountNumber = i;
                 modeNumbers = 1;
             }
-            else if (count = maxCount && i != maxCountNumber) {
+            else if (count == maxCount && i != maxCountNumber) {
                 modeNumbers += 1;
             }
         }
@@ -112,6 +112,7 @@ public final class Stats {
                 return arr[i];
             }
         }
+        return 0;
     }
 
     /**
