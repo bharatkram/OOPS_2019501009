@@ -68,9 +68,6 @@ public final class CardCatalog {
     }
 
     public static void main(String[] args) {
-        boolean continue = true;
-        do {
-            
-        }
+        
     }
 }
