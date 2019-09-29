@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestRunner",
+            "request": "launch",
+            "mainClass": "TestRunner",
+            "projectName": "OOPS_2019501009_c9ea2d1f"
+        }
+    ]
+}
