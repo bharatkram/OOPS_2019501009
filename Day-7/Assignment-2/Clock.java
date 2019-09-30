@@ -30,23 +30,26 @@ public class Clock {
 
     public Clock(String s) {
         String[] str = s.split(":");
-        h = (int) str[0];
-        m = (int) str[1];
+        h = Integer.parseInt(str[0]);
+        // h = (int) str[0];
+        m = Integer.parseInt(str[1]);
+        // m = (int) str[1];
     }
 
     // Returns a string representation of this clock, using the format HH:MM.
     public String toString() {
-        String str = ("%2d:%2d",h,m);
-        return str;
+        return String.format("%02d:%02d",h,m);
     }
 
     // Is the time on this clock earlier than the time on that one?
     public boolean isEarlierThan(Clock that) {
-        if(that.h < this.h)
+        // System.out.println(this.toString());
+        // System.out.println(that);
+        if(this.h < that.h)
             return true;
-        else if(that.h > this.h)
+        else if(this.h > that.h)
             return false;
-        else if(that.m > this.h)
+        else if(this.m < that.m)
             return true;
         else
             return false;
@@ -59,16 +62,24 @@ public class Clock {
     // Adds 1 minute to the time on this clock.
     public void tic() {
         m += 1;
+        if(m >= 60) {
+            m -= 60;
+            h += 1;
+            if(h >= 24)
+                h -= 24;
+        }
     }
 
     // Adds Δ min to the time on this clock.
     public void toc(int delta) {
-        m += delta;
-        if(m >= 60) {
-            m -= 60;
-            h += 1;
-            if(h >= 24) {
-                h -= 24;
+        if(delta >= 0) {
+            m += delta;
+            while(m >= 60) {
+                m -= 60;
+                h += 1;
+                if(h >= 24) {
+                    h -= 24;
+                }
             }
         }
     }
