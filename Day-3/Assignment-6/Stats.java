@@ -44,6 +44,9 @@ public final class Stats {
      */
     public static double mean(final int[] arr) {
         //  Your code goes here....
+        if(arr.length == 0) {
+            return 0.0;
+        }
         double sum = 0.0;
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
@@ -79,30 +82,31 @@ public final class Stats {
      */
     public static int mode(int[] arr) {
         //  Your code goes here....
-        int count = 0;
+        int count;
         int maxCount = 0;
-        float maxCountNumber = 0.0f;
+        int maxCountNumber = 0;
         int modeNumbers = 0;
         for (int i = 0; i < arr.length; i++) {
+            count = 0;
             for (int j = 0; j < arr.length; j++) {
                 if (arr[i] == arr[j]) {
                     count += 1;
                 }
             }
-            if ((count > maxCount) && (i != maxCountNumber)) {
+            if ((count > maxCount) && (arr[i] != maxCountNumber)) {
                 maxCount = count;
-                maxCountNumber = i;
+                maxCountNumber = arr[i];
                 modeNumbers = 1;
             }
-            else if (count == maxCount && i != maxCountNumber) {
+            else if (count == maxCount && arr[i] != maxCountNumber) {
                 modeNumbers += 1;
             }
-        }
-        if (modeNumbers > 1) {
+        }System.out.println(maxCount);
+        if (maxCount == 1) {
             return 0;
         }
-        count = 0;
         for (int i = 0; i < arr.length; i++) {
+            count = 0;
             for (int j = 0; j < arr.length; j++) {
                 if (arr[i] == arr[j]) {
                     count += 1;
@@ -124,10 +128,10 @@ public final class Stats {
      */
     public static double variance(int[] arr) {
         //  Your code goes here....
-        double median = median(arr);
+        double median = mean(arr);
         double variance = 0.0;
         for (int i = 0; i < arr.length; i++) {
-            variance = Math.pow(median - arr[i], 2);
+            variance += Math.pow(median - arr[i], 2);
         }
         variance /= arr.length;
         return variance;
