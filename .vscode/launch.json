@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - List",
+            "request": "launch",
+            "mainClass": "List",
+            "projectName": "OOPS_2019501009_c9ea2d1f"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Clock",
             "request": "launch",
             "mainClass": "Clock",
