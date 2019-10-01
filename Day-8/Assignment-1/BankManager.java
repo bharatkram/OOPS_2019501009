@@ -38,20 +38,23 @@ class COD extends BankAccount {
 final class BankManager {
 
     public static void main(String[] args) {
+
         CheckingAccount acc1 = new CheckingAccount();
-        // acc1();
-        System.out.println(acc1.accountNumber);
-        System.out.println(acc1.balance);
-        System.out.println(acc1.limit);
+        System.out.println("Checking Account");
+        System.out.println("Account number: " + acc1.accountNumber);
+        System.out.println("Balance: " + acc1.balance);
+        System.out.println("Account limit: " + acc1.limit);
+        System.out.println();
         SavingsAccount acc2 = new SavingsAccount();
-        // acc2();
-        System.out.println(acc2.accountNumber);
-        System.out.println(acc2.balance);
-        System.out.println(acc2.maxTransactions);
+        System.out.println("Savings Account");
+        System.out.println("Account number: " + acc2.accountNumber);
+        System.out.println("Balance: " + acc2.balance);
+        System.out.println("No. of transactions: " + acc2.maxTransactions);
+        System.out.println();
         COD acc3 = new COD();
-        // acc3();
-        System.out.println(acc3.accountNumber);
-        System.out.println(acc3.balance);
-        System.out.println(acc3.time);
+        System.out.println("Certificate of Deposit Account");
+        System.out.println("Account number: " + acc3.accountNumber);
+        System.out.println("Balance: " + acc3.balance);
+        System.out.println("Time period: " + acc3.time);
     }
 }
