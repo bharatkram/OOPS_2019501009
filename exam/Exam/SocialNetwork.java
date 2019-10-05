@@ -46,16 +46,16 @@ public class SocialNetwork {
         String[] followers;
         String[] usersArray = str.split(";");
         for (int i = 0; i < usersArray.length; i++) {
-            if (details != null) {
                 details = usersArray[i].split(" is connected to ");
                 // users[size] = details[0];
-                users[size].setUserName(details[0]);
+                // users[size].setUserName(details[0]);
                 followers = details[1].split(",");
                 for (int j = 0; j < followers.length; j++) {
+                    System.out.println(followers[j]);
                     users[size].add(followers[j]);
                 }
             size++;
-            }
+            
         }
     }
 
