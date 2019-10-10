@@ -347,7 +347,7 @@ public abstract class AbstractList implements ListInterface  {
     public int lastIndexOf(int item) {
         // TODO
         // Your code goes here.
-        for (int i = size - 1; i > -1; i++) {
+        for (int i = size - 1; i >= 0; i++) {
             if (list[i] == item) {
                 return i;
             }
@@ -385,12 +385,8 @@ public abstract class AbstractList implements ListInterface  {
     public List subList(int fromIndex, int toIndex) {
         // TODO
         // Your code goes here.
-        if ( fromIndex < toIndex && toIndex <= size) {
-            List<Integer> lst = new ArrayList<Integer>();
-            for (int i = fromIndex; i < toIndex; i++) {
-                lst.add(list[i]);
-            }
-            return lst;
+        if (fromIndex < toIndex && toIndex <= size) {
+            
         }
         return null;
     }
@@ -405,10 +401,6 @@ public abstract class AbstractList implements ListInterface  {
     public void set(int index, int item) {
         // TODO
         // Your code goes here.
-        if (this.getClass() == List.class) {
-            if (index < size) {
-                list[index] = item;
-            }
-        }
+        return;
     }
 }
