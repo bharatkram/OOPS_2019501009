@@ -1,4 +1,6 @@
-
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
 
 public final class ToDoList {
 
@@ -45,10 +47,11 @@ public final class ToDoList {
 
     public static void main(String[] args) {
         ToDoList list = new ToDoList();
-        list.addWork(new ToDo("Assignment-1", "String Times", "10/10/2019", "Finished"));
-        list.addWork(new ToDo("Assignment-2", "Front Times", "11/10/2019", "Finished"));
-        list.addWork(new ToDo("Assignment-3", "Squares", "12/10/2019", "Not Finished"));
-        list.addWork(new ToDo("Assignment-4", "String Handling", "13/10/2019", "Not Finished"));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        list.addWork(new ToDo("Assignment-1", "String Times", LocalDate.of(2019,Month.OCTOBER,10), "Finished"));
+        list.addWork(new ToDo("Assignment-2", "Front Times", LocalDate.of(2019,Month.OCTOBER,11), "Finished"));
+        list.addWork(new ToDo("Assignment-3", "Squares", LocalDate.of(2019,Month.OCTOBER,12), "Not Finished"));
+        list.addWork(new ToDo("Assignment-4", "String Handling", LocalDate.of(2019,Month.OCTOBER,13), "Not Finished"));
 
         list.remove("Assignment-1");
 

@@ -1,14 +1,14 @@
 import java.util.Objects;
-import java.util.Date;
+import java.time.LocalDate;
 
 public final class ToDo {
     
     String name;
     String description;
-    String dueDate;
+    LocalDate dueDate;
     String status;
 
-    ToDo(String name, String description, String dueDate, String status) {
+    ToDo(String name, String description, LocalDate dueDate, String status) {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
@@ -23,7 +23,7 @@ public final class ToDo {
         return description;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return dueDate;
     }
 
