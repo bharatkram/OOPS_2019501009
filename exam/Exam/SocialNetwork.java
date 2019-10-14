@@ -1,7 +1,6 @@
 /**
  * This class implements all the methods of the SocialNetrorkInterface 
  * You are free to add your own behaviours to this class.
- * 
  * @author Siva Sankar
  */
 
@@ -23,7 +22,6 @@ public class SocialNetwork {
      * Initializes the default values of the social network.
      */
     public SocialNetwork() {
-        // TODO
         // Your code goes here
         users = new User[10];
         size = 0;
@@ -38,9 +36,6 @@ public class SocialNetwork {
     public void createDataStructure(String str) {
         // TODO
         // Your code goes here
-        if (str == null) {
-            return;
-        }
 
         String[] details = null;
         String[] followers;
