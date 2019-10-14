@@ -44,7 +44,7 @@ public class Menu {
         //  Testcase 1:
         SocialNetwork network = new SocialNetwork();
         network.createDataStructure(s);
-        System.out.println(network.toString());
+        // System.out.println(network.toString());
         if("John : [Bryant, Debra, Walter]\nBryant : [Olive, Ollie, Freda, Mercedes]\nDebra : [Walter, Levi, Jennie, Robin]\nWalter : [John, Levi, Bryant]\nOlive : [John, Ollie]\nOllie : [Mercedes, Freda, Bryant]\nFreda : [Olive, John, Debra]\nMercedes : [Walter, Robin, Bryant]\nRobin : [Ollie]\nLevi : [Ollie, John, Walter]\nJennie : [Levi, John, Freda, Robin]".equals(network.toString())) {
             System.out.println("Testcase 1 passed");
             count++;
@@ -298,23 +298,23 @@ public class Menu {
         }
 
         //  Testcase 24:
-        // scan = new Scanner(new File("SN.txt"));
-        // sb = new StringBuffer();
-        // while(scan.hasNext()) {
-        //     sb.append(scan.nextLine() + ";");
-        // }
-        // s = sb.toString();
-        // s = s.substring(0, sb.length()-1);
-        // network = new SocialNetwork();
-        // network.createDataStructure(s);
+        scan = new Scanner(new File("SN.txt"));
+        sb = new StringBuffer();
+        while(scan.hasNext()) {
+            sb.append(scan.nextLine() + ";");
+        }
+        s = sb.toString();
+        s = s.substring(0, sb.length()-1);
+        network = new SocialNetwork();
+        network.createDataStructure(s);
         
-        // //  Testcase 24
-        // if ("John : [Bryant, Debra, Walter]\nBryant : \nDebra : \nWalter : \nMercedes : [Walter, Robin, Bryant]\nRobin : ".equals(network.toString())) {
-        //     System.out.println("Testcase 24 passed");
-        //     count++;
-        // } else {
-        //     System.out.println("Testcase 24 failed");
-        // }
+        //  Testcase 24
+        if ("John : [Bryant, Debra, Walter]\nBryant : \nDebra : \nWalter : \nMercedes : [Walter, Robin, Bryant]\nRobin : ".equals(network.toString())) {
+            System.out.println("Testcase 24 passed");
+            count++;
+        } else {
+            System.out.println("Testcase 24 failed");
+        }
 
         //  Testcase 25
         users = network.getCommonConnections(

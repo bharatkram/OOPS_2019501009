@@ -1,42 +1,59 @@
 import java.util.*;
 
 public class User {
-    private String userName;
-    private int noOfConnections;
-    private String[] connections;
 
-    User(String s, String[] f) {
-        userName = s;
-        connections = f;
-        noOfConnections = f.length;
-    }
+    String name;
+    User[] connections;
+    int number;
 
     User() {
-        userName = "";
-        noOfConnections = 0;
-        connections = new String[10];
+        name = "testing";
+        connections = new User[10];
+        number = 0;
     }
 
-    public void setUserName(String s) {
-        userName = s;
+    User(String name) {
+        this.name = name;
+        connections = new User[10];
+        number = 0;
+    }
+
+    User(String name, User[] connections) {
+        this.name = name;
+        if (connections == null) {
+            this.connections = new User[10];
+            number = 0;
+        } else {
+            number = connections.length;
+            this.connections = connections;
+        }
+    }
+
+    public void setUserName(String name) {
+        this.name = name;
     }
 
     public String getUserName() {
-        return userName;
+        return name;
     }
 
-    public void add(String u) {
-        if(noOfConnections == connections.length) {
-            connections = Arrays.copyOf(connections, connections.length+10);
-        }
-        connections[noOfConnections++] = u;
+    public void setConnections(User user) {
+        connections[number++] = user;
     }
 
-    public int noOfConnections() {
-        return noOfConnections;
-    }
-
-    public String[] connectionsList() {
+    public User[] getConnections() {
         return connections;
+    }
+
+    public String toString() {
+        String conString = "[";
+        for (int i = 0; i < number; i++) {
+            if (connections[i] == null) {
+                break;
+            }
+            conString += connections[i] + " ";
+        }
+        conString += "]";
+        return name + ;
     }
 }

@@ -2,6 +2,7 @@
  * This class implements all the methods of the SocialNetrorkInterface 
  * You are free to add your own behaviours to this class.
  * @author Siva Sankar
+ * @author Bharat Ram Koppu
  */
 
 import java.util.Arrays;
@@ -23,35 +24,75 @@ public class SocialNetwork {
      */
     public SocialNetwork() {
         // Your code goes here
-        users = new User[10];
+        users = new User[20];
         size = 0;
     }
 
     /**
      * This method takes the string as a parameter which is used
      * to create a network. do nothing if the string is empty.
-     * 
+     *
      * @param str to be used to create a network.
      */
     public void createDataStructure(String str) {
-        // TODO
         // Your code goes here
-
-        String[] details = null;
-        String[] followers;
-        String[] usersArray = str.split(";");
-        for (int i = 0; i < usersArray.length; i++) {
-                details = usersArray[i].split(" is connected to ");
-                // users[size] = details[0];
-                // users[size].setUserName(details[0]);
-                followers = details[1].split(",");
-                for (int j = 0; j < followers.length; j++) {
-                    System.out.println(followers[j]);
-                    users[size].add(followers[j]);
-                }
-            size++;
-            
+        if (str == "" || str == null) {
+            return;
         }
+        // first split is to get one line at a time.
+        // each line contains name of user and his connections.
+        String[] usersList = str.split(";");
+        // iterating line by line
+        for (String userString: usersList) {
+            // second split is to separate the name of user and his connections
+            String[] uAndc = userString.split(" is connected to ");
+            // System.out.println(uAndc[0] + "\n" + uAndc[1] + "\n");
+
+            // this is to check if the user already is present in the list.
+            // if not, we add him/her to the list.
+            User result = null;
+            boolean flag = true;
+            if (size == 0) {
+                users[size] = new User(uAndc[0]);
+                result = users[size++];
+            } else {
+                for (User user: users) {
+                    if (user.getUserName().equals(uAndc[0])) {
+                        result = user;
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    users[size] = new User(uAndc[0]);
+                    result = users[size];
+                    size += 1;
+                }
+            }
+
+            // third split is to separate the users connections.
+            String[] connections = uAndc[1].split(",");
+            // iterating to get one connection at a time.
+            for (String connection : connections) {
+                // checking if the connection is present in the list.
+                // if not, we add him/her to the list.
+                // and then, we add him/her to the connections list.
+                flag = true;
+                for (int i = 0; i < size; i++) {
+                    if (users[i].getUserName().equals(connection)) {
+                        flag = false;
+                        result.setConnections(users[i]);
+                        break;
+                    }
+                }
+                if (flag) {
+                    users[size] = new User(connection);
+                    result.setConnections(users[size]);
+                    size += 1;
+                }
+            }
+        }
+        return;
     }
 
     private boolean searchUser(User user) {
@@ -87,22 +128,13 @@ public class SocialNetwork {
      * @param userA to be added to the social network.
      */
     public void addUser(User userA) {
-        // TODO
         // Your code goes here
-        if (size == users.length) {
-            users = Arrays.copyOf(users, users.length+10);
-        }
-
-        boolean flag = false;
         for (int i = 0; i < size; i++) {
-            if (userA.equals(users[i])) {
-                flag = true;
-                break;
+            if(users[i].getUserName().equals(userA.getUserName())) {
+                return;
             }
         }
-        if(!flag) {
-            users[size++] = userA;
-        }
+        users[size++] = userA;
     }
 
     /**
@@ -118,25 +150,17 @@ public class SocialNetwork {
      * @param userB to be added to userA connections
      */
     public void addConnection(User userA, User userB) {
-        // TODO
         // Your code goes here
-        boolean flagA = false;
-        boolean flagB = false;
-
+        boolean flagA = false, flagB = false;
         for (int i = 0; i < size; i++) {
             if (users[i].equals(userA)) {
                 flagA = true;
-            }
-        }
-
-        for (int i = 0; i < size; i++) {
-            if (users[i].equals(userB)) {
+            } else if (users[i].equals(userB)) {
                 flagB = true;
             }
         }
-
         if (flagA && flagB) {
-            userA.add(userB.getUserName());
+            userA.setConnections(userB);
         }
     }
 
@@ -151,42 +175,13 @@ public class SocialNetwork {
      * @return the list of connections of userA. otherwise return null
      */
     public User[] getConnections(User userA) {
-        // TODO
         // Your code goes here
-
-        // User[] connectionUsers = new User[20];
-        // int count = 0;
-        // String[] connections = new String[20];
-
-        // for (int i = 0; i < size; i++) {
-        //     if (users[i].equals(userA)) {
-        //         connections = users[i].connectionsList();
-        //     }
-        // }
-        // for (int i = 0; i < connections.length; i++) {
-        //     for (int j = 0; j < size; j++) {
-        //         if (users[j].getUserName().equals(connections[i])) {
-        //             connectionUsers[count++] = users[j];
-        //         }
-        //     }
-        // }
-        // return connectionUsers;
-
-        User[] list = new User[20];
-        int count = 0;
-        String[] stringList = new String[20];
-
-        stringList = userA.connectionsList();
-        if (stringList != null) {
-            for (int i = 0; i < stringList.length; i++) {
-                for (int j = 0; j < size; j++) {
-                    if (stringList[i].equals(users[j].getUserName())) {
-                        list[count++] = users[i];
-                    }
-                }
+        for (int i = 0; i < size; i++) {
+            if (users[i].equals(userA)) {
+                return users[i].getConnections();
             }
         }
-        return list;
+        return null;
     }
 
     /**
@@ -201,72 +196,48 @@ public class SocialNetwork {
      * both are in the network, otherwise return null
      */
     public User[] getCommonConnections(User userA, User userB) {
-        // TODO
         // Your code goes here
-
-    //     User[] commonUsers = new User[20];
-    //     int count = 0;
-
-    //     boolean flagA = false;
-    //     boolean flagB = false;
-    //     for (int i = 0; i < size; i++) {
-    //         if (flagA && flagB)
-    //             break;
-    //         if (users[i].equals(userA)) {
-    //             flagA = true;
-    //         }
-    //         else if (users[i].equals(userB)) {
-    //             flagB = true;
-    //         }
-    //     }
-
-    //     if (flagA && flagB) {
-    //         String[] conA = userA.connectionsList();
-    //         String[] conB = userB.connectionsList();
-    //         String[] common = new String[20];
-    //         int commonSize = 0;
-
-    //         for (int i = 0; i < userA.noOfConnections(); i++) {
-    //             for (int j = 0; j < userB.noOfConnections(); j++) {
-    //                 if (conA[i].equals(conB[j])) {
-    //                     common[commonSize++] = userA.getUserName();
-    //                     break;
-    //                 }
-    //             }
-    //         }
-    //         for (int i =0; i < common.length; i++) {
-    //             for (int j = 0; j < users.length; j++) {
-    //                 if (users[j].getUserName().equals(common[i])) {
-    //                     commonUsers[count++] = users[j];
-    //                 }
-    //             }
-    //         }
-    //         return commonUsers;
-    //     }
-    //     return null;
-        
-        String[] listA = userA.connectionsList();
-        String[] listB = userB.connectionsList();
-        String[] commonList = new String[20];
-        int count = 0;
-        User[] common = new User[20];
-        int c = 0;
-
-        for (int i = 0; i < listA.length; i++) {
-            for (int j = 0; j < listB.length; j++) {
-                if (listA[i].equals(listB[j])) {
-                    commonList[count++] = listA[i];
+        boolean flagA = false, flagB = false;
+        User[] consA = null, consB = null;
+        int sizeA = 0, sizeB = 0;
+        for (int i = 0; i < size; i++) {
+            if (users[i].equals(userA)) {
+                flagA = true;
+                consA = users[i].getConnections();
+                for (int k = 0; k < consA.length; k++) {
+                    if (consA[k] == null) {
+                        break;
+                    }
+                    sizeA += 1;
+                }
+            } else if (users[i].equals(userB)) {
+                flagB = true;
+                consB = users[i].getConnections();
+                for (int k = 0; k < consB.length; k++) {
+                    if (consB[k] == null) {
+                        break;
+                    }
+                    sizeB += 1;
                 }
             }
         }
-        for (int i = 0; i < commonList.length; i++) {
-            for (int j = 0; j < size; j++) {
-                if (commonList[i].equals(users[j].getUserName())) {
-                    common[c++] = users[j];
+        for (int i = 0; i < sizeA; i++) {
+            // System.out.println(consA[i].getUserName());
+        }
+        if (flagA && flagB) {
+            User[] common = new User[10];
+            int commonSize = 0;
+            for (int i = 0; i < sizeA; i++) {
+                for (int j = 0; j < sizeB; j++) {
+                    if (consA[i].equals(consB[j])) {
+                        common[commonSize++] = consA[i];
+                        break;
+                    }
                 }
             }
+            return common;
         }
-        return common;
+        return null;
     }
 
     /**
