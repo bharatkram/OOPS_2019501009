@@ -161,11 +161,11 @@ public abstract class AbstractList implements ListInterface  {
      */
     public void add(int index, int item) {
         // Your code goes here.
-        if (size == list.length) {
-            resize();
-        }
         if (index < size && index >= 0) {
-            for (int i = size; i >= index; i++) {
+            if (size == list.length) {
+                resize();
+            }
+            for (int i = size++; i > index; i--) {
                 list[i] = list[i - 1];
             }
             list[index] = item;
@@ -253,8 +253,8 @@ public abstract class AbstractList implements ListInterface  {
             for (int i = index; i < size - 1; i++) {
                 list[i] = list[i + 1];
             }
+            list[--size] = 0;
         }
-        list[--size] = 0;
     }
 
     /**
@@ -395,7 +395,7 @@ public abstract class AbstractList implements ListInterface  {
      */
     public List subList(int fromIndex, int toIndex) {
         // Your code goes here.
-        if (fromIndex < toIndex && toIndex <= size) {
+        if (fromIndex >= 0 && fromIndex < toIndex && toIndex <= size) {
             AbstractList l = new List();
             for (int i = fromIndex; i < toIndex; i++) {
                 l.add(list[i]);
