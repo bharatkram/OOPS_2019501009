@@ -56,9 +56,9 @@ public class SocialNetwork {
                 users[size] = new User(uAndc[0]);
                 result = users[size++];
             } else {
-                for (User user: users) {
-                    if (user.getUserName().equals(uAndc[0])) {
-                        result = user;
+                for (int i = 0; i < size; i++) {
+                    if (users[i].getUserName().equals(uAndc[0])) {
+                        result = users[i];
                         flag = false;
                         break;
                     }
@@ -204,6 +204,9 @@ public class SocialNetwork {
             if (users[i].equals(userA)) {
                 flagA = true;
                 consA = users[i].getConnections();
+                if (consA[0] == null) {
+                    return null;
+                }
                 for (int k = 0; k < consA.length; k++) {
                     if (consA[k] == null) {
                         break;
@@ -213,6 +216,9 @@ public class SocialNetwork {
             } else if (users[i].equals(userB)) {
                 flagB = true;
                 consB = users[i].getConnections();
+                if (consB[0] == null) {
+                    return null;
+                }
                 for (int k = 0; k < consB.length; k++) {
                     if (consB[k] == null) {
                         break;

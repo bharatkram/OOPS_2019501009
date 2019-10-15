@@ -14,7 +14,6 @@
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public abstract class AbstractList implements ListInterface  {
     // Implement all the methods mentioned to build a ListADT and 
@@ -165,10 +164,12 @@ public abstract class AbstractList implements ListInterface  {
         if (size == list.length) {
             resize();
         }
-        for (int i = size; i >= index; i++) {
-            list[i] = list[i - 1];
+        if (index < size && index >= 0) {
+            for (int i = size; i >= index; i++) {
+                list[i] = list[i - 1];
+            }
+            list[index] = item;
         }
-        list[index] = item;
     }
 
     /**
@@ -180,8 +181,8 @@ public abstract class AbstractList implements ListInterface  {
      */
     public void addAll(List lst) {
         // Your code goes here.
-        for (Object i : lst) {
-            add((int) i);
+        for (int i = 0; i < lst.size; i++) {
+            add(lst.get(i));
         }
     }
 
@@ -395,11 +396,11 @@ public abstract class AbstractList implements ListInterface  {
     public List subList(int fromIndex, int toIndex) {
         // Your code goes here.
         if (fromIndex < toIndex && toIndex <= size) {
-            List<Integer> l = new ArrayList<Integer>();
+            AbstractList l = new List();
             for (int i = fromIndex; i < toIndex; i++) {
                 l.add(list[i]);
             }
-            return l;
+            return (List)l;
         }
         return null;
     }

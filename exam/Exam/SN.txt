@@ -1,6 +1,2 @@
 John is connected to Bryant,Debra,Walter
-Bryant is connected to  
-Debra is connected to  
-Walter is connected to  
 Mercedes is connected to Walter,Robin,Bryant
-Robin is connected to  

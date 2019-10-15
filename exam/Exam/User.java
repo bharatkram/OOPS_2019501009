@@ -46,14 +46,19 @@ public class User {
     }
 
     public String toString() {
+        if (connections[0] == null) {
+            return name + " : ";
+        }
+        int pos = number;
         String conString = "[";
         for (int i = 0; i < number; i++) {
-            if (connections[i] == null) {
+            if (connections[i + 1] == null) {
+                pos = i;
                 break;
             }
-            conString += connections[i] + " ";
+            conString += connections[i].getUserName() + ", ";
         }
-        conString += "]";
-        return name + ;
+        conString += connections[pos].getUserName() + "]";
+        return name + " : " + conString;
     }
 }

@@ -20,20 +20,20 @@ public class TestJUnit {
       System.out.println("TestCase for Add method in Lists.");
       List lst = new List();
       lst.add(5);
-      System.out.println(lst.toString());
+      // System.out.println(lst.toString());
       assertEquals("1. List Object", "[5]", lst.toString());
 
       AbstractList lst1 = new List();
       for (int i = 0; i < 20; i++) {
          lst1.add(i);
-         System.out.println(lst1.toString());
+         // System.out.println(lst1.toString());
       }
       assertEquals("2. List Object through abstract class", "[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]", lst1.toString());
       
       ListInterface lst2 = new List();
       for (int i = 0; i < 20; i++)
          lst2.add(i);
-      System.out.println(lst2.toString());
+      // System.out.println(lst2.toString());
       assertEquals("3. List Object through interface", "[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]", lst2.toString());
    }
 
@@ -307,6 +307,8 @@ public class TestJUnit {
       int[] arr = {1,2,3,4,5,6};
       lstin.addAll(arr);
       lst.addAll(lstin);
+      // System.out.println(arr.length);
+      // System.out.println(lstin.list.length);
       assertEquals("1. List Object", "[1,2,3,4,5,6]", lst.toString());
       
       AbstractList lst1 = new List();
