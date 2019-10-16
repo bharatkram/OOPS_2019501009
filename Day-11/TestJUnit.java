@@ -82,6 +82,7 @@ public class TestJUnit {
       assertNull("3. ", obj.getRow(1));
       assertNull("4. ", obj.getRows(2, 6));
       assertNull("5. ", obj.getFieldName(10));
+    //   System.out.println(Arrays.toString(obj.getColumnValues(5)));
       assertNull("6. ", obj.getColumnValues(5));
    }
 }
