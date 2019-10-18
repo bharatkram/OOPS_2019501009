@@ -27,6 +27,7 @@ public final class CardCatalog {
         } else {
             int pos = obtSize;
             for (int i = 0; i < obtSize; i++) {
+                System.out.println(obtSize);
                 if (orderByTitle[i].getTitle().compareTo(card.getTitle())
                                                                         > 0) {
                     pos = i;
@@ -36,8 +37,8 @@ public final class CardCatalog {
             for (int i = obtSize; i > pos + 1; i--) {
                 orderByTitle[i] = orderByTitle[i-1];
             }
-            orderByTitle[pos] = card;
             obtSize++;
+            orderByTitle[pos] = card;
         }
 
         if (obaSize == 0) {
