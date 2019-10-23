@@ -1,41 +1,23 @@
-public final class Card {
-
+public class Card {
     private String title;
     private String author;
     private String subject;
-
-    public Card(String title, String author, String subject) {
+    //constructor
+    Card(String title, String author, String subject) {
         this.title = title;
         this.author = author;
         this.subject = subject;
     }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = title;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
+    //getTitle
     public String getTitle() {
         return title;
     }
-
+    //getAuthor
     public String getAuthor() {
         return author;
     }
-    
+    //getSubject
     public String getSubject() {
         return subject;
-    }
-
-    public String toString() {
-        return "{ Title = " + title + ", Author = " + author
-                + ", Subject = " + subject + " }";
     }
 }

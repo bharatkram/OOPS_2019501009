@@ -24,8 +24,10 @@ public class ProductCatalog {
         }
     }
 
-    public Product[] showCatalog() {
-        return products;
+    public void showCatalog() {
+        for (int i = 0; i < numberOfProducts; i++) {
+            System.out.println(products[i]);
+        }
     }
 
     public Product searchProductFromCatalog(final String name) {

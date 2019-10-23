@@ -12,6 +12,14 @@ public class User {
         scan = new Scanner(System.in);
     }
 
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void addProduct(Product product) {
+        cart.addToCart(product);
+    }
+
     public void getcouponCode() {
         System.out.println("Enter the coupon code:");
         while (true) {

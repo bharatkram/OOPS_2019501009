@@ -111,9 +111,7 @@ public abstract class AbstractSet<E extends Comparable<E>> implements SetInterfa
         }
 
         for (int i = 0; i < setA.size(); i++) {
-            if (!union.contains(setA.get(i))) {
                 union.add(setA.get(i));
-            }
         }
         return union;
     }

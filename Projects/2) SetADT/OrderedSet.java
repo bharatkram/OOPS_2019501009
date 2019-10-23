@@ -36,9 +36,7 @@ public class OrderedSet<E extends Comparable<E>> extends AbstractSet<E> {
      */
     public void add(final Set<E> st) {
         for (int i = 0; i < st.size(); i++) {
-            if (!this.contains(st.get(i))) {
                 this.add(st.get(i));
-            }
         }
     }
 

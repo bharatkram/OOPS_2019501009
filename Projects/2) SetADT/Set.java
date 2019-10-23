@@ -24,7 +24,6 @@ public class Set<E extends Comparable<E>> extends AbstractSet<E> {
      * @param lst the list to be added to the set.
      */
     public void add(final Set<E> lst) {
-        boolean flag;
         for (int i = 0; i < lst.size(); i++) {
             this.add(lst.get(i));
         }
