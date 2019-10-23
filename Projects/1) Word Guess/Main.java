@@ -12,8 +12,8 @@ public class Main {
     public static void main(final String[] args) {
         //the instance of the class game.
         Game game = new Game();
-        game.readTxt();
-        game.fixWords();
+        // game.readTxt();
+        // game.fixWords();
 
         //start of the game.
         System.out.println("Enter the number of players.");
@@ -24,10 +24,8 @@ public class Main {
             try {
                 numberOfPlayers = Integer.parseInt(scan.nextLine());
                 break;
-            } catch (StringIndexOutOfBoundsException e) {
-                System.out.println("Please enter something:");
-            } catch (Exception e) {
-                System.out.println("Enter only numbers.");
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a number:");
             }
         }
         Player[] players = new Player[numberOfPlayers];
@@ -52,12 +50,15 @@ public class Main {
                     + "\n1.Easy\n2.Medium\n3.Hard\n4.Random");
             while (true) {
                 try {
-                    players[i].setLevel(Integer.parseInt(scan.nextLine()));
-                    break;
-                } catch (StringIndexOutOfBoundsException e) {
-                    System.out.println("Please enter something:");
-                } catch (Exception e) {
-                    System.out.println("Enter only numebers.");
+                    int temp;
+                    temp = Integer.parseInt(scan.nextLine());
+                    players[i].setLevel(temp);
+                    if (temp >= 1 && temp <= 4){   
+                        break;
+                    }
+                    System.out.println("Enter a number between 1 and 4");
+                } catch (NumberFormatException e) {
+                    System.out.println("Please enter a number:");
                 }
             }
             // players[i].setScore((int)(Math.random() * 10));

@@ -23,11 +23,16 @@ public class Game extends WordsADT {
      */
     public int guess(final int level) {
 
+        //initialising the list of words.
+        WordsADT words = new WordsADT();
+        words.readTxt();
+        words.fixWords();
+
         //the word to be guessed by the player.
         Word word = new Word();
+        int lvl = level;
         while (true) {
-            int lvl = level;
-            word = getWordRandomly(lvl);
+            word = words.getWordRandomly(lvl);
             if (word != null) {
                 break;
             }
@@ -54,6 +59,7 @@ public class Game extends WordsADT {
 
         while (!word.getWord().equals(new String(toBeGuessed))
                     && chances != 0) {
+            System.out.println("\n\n\nChances Left: " + chances);
             System.out.println("Enter '.' for hints.");
             System.out.print("Enter your guess: ");
             while (true) {
@@ -92,14 +98,16 @@ public class Game extends WordsADT {
                 System.out.println(new String(toBeGuessed));
             } else {
                 System.out.println("Choose only characters available.\n\n");
+                System.out.println("Available letters:\n"
+                        + Arrays.toString(availableLetters.toArray()));
+                System.out.println(new String(toBeGuessed));
                 chances -= 1;
             }
-            System.out.println("\n\n\nChances Left: " + chances);
         }
 
         if (chances != 0) {
             System.out.println("Guessed it right!");
-            return toBeGuessed.length + hints * 5;
+            return toBeGuessed.length + (hints == 0 ? 10 : (hints == 1 ? 5 : 0));
         }
         System.out.println("Out of chances.\nThe answer is: "
                 + word.getWord());

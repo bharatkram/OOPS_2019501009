@@ -122,7 +122,7 @@ public class Player implements Comparable<Player> {
      */
     public int compareTo(final Player that) {
         if (this.getScore() == that.getScore()) {
-            return Integer.compare(that.getScore(), this.getScore());
+            return Integer.compare(that.getLevel(), this.getLevel());
         }
         return Integer.compare(that.getScore(), this.getScore());
     }
