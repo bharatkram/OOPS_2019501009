@@ -33,7 +33,7 @@ public class ProductCatalog {
     public void showCatalog() {
         System.out.println(nameOfCompany);
         for (int i = 0; i < numberOfProducts; i++) {
-            System.out.println(products[i]);
+            System.out.println((i + 1) + ")" + products[i]);
         }
     }
 

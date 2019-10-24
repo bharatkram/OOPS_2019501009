@@ -12,10 +12,12 @@ public class Set<E extends Comparable<E>> extends AbstractSet<E> {
      *
      * @param item the element to be added to the set.
      */
-    public void add(final E item) {
+    public int add(final E item) {
         if (!this.contains(item)) {
             set[size++] = item;
+            return 1;
         }
+        return 0;
     }
 
     /**

@@ -4,12 +4,10 @@ public class ShopOnline {
 
     ProductCatalog[] company;
     User user;
-    Scanner scan;
 
     ShopOnline(final String name) {
         company = new ProductCatalog[3];
         user = new User(name);
-        scan = new Scanner(System.in);
     }
 
     public void setCatalogs() {
@@ -50,12 +48,13 @@ public class ShopOnline {
     }
 
     public void categoryMenu() {
+        Scanner scancm = new Scanner(System.in);
         int choice = 0;
         while (true) {
             try {
                 System.out.println("Enter the category you choose:\n1) Mobiles"
                     + "\n2) Clothes\n3) Kitchen\n4) Exit");
-                choice = Integer.parseInt(scan.nextLine());
+                choice = Integer.parseInt(scancm.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Enter a valid input.");
             }
@@ -70,22 +69,28 @@ public class ShopOnline {
                 case 3 :company[choice -1].showCatalog();
                         chosen(choice - 1);
                         break;
-                case 4 :return;
+                case 4 ://scancm.close();
+                        return;
                 default:break;
             }
         }
     }
 
     public void chosen(final int choice) {
+        Scanner scanc = new Scanner(System.in);
         while (true) {
             System.out.println("Enter the product to be added to cart:\n'.'to exit");
-            String ch = scan.nextLine();
+            String ch = scanc.nextLine();
             if (ch.charAt(0) == '.') {
+                // scanc.close();
                 return;
             }
             Product prod = company[choice].get(Integer.parseInt(ch) - 1);
-            if (prod != null) {
+            if (prod != null && prod.getQty() > 0) {
+                prod.setQty(1);
                 user.addProduct(prod);
+            } else if (prod.getQty() == 0) {
+                System.out.println("Out of stock.");
             } else {
                 System.out.println("Enter a valid choice.");
             }
@@ -94,23 +99,24 @@ public class ShopOnline {
 
     public static void main(final String[] args) {
         Cart finalCart;
-        Scanner scan = new Scanner(System.in);
+        Scanner scanSO = new Scanner(System.in);
 
         System.out.println("Enter the name of the user.");
-        ShopOnline s = new ShopOnline(scan.nextLine());
+        ShopOnline s = new ShopOnline(scanSO.nextLine());
+
+        s.user.getCouponCode();
 
         while (true) {
             s.setCatalogs();
 
             s.categoryMenu();
 
-            s.user.getCouponCode();
-
             s.user.showItems();
 
-            System.out.println("Do you want to remove any item from your cart?");
-            if (scan.nextLine().charAt(0) == 'y') {
-                if (s.user.getCart().size() == 0) {
+            System.out.println("Do you want to remove any item from your cart?"
+                    + " y/n");
+            if (scanSO.nextLine().charAt(0) == 'y') {
+                if (s.user.getCart().productsTaken.size() == 0) {
                     System.out.println("No items in cart");
                 } else {
                     s.user.remove();
@@ -120,11 +126,12 @@ public class ShopOnline {
             finalCart = s.user.getCart();
 
             System.out.println("Do you want to continue?\nPress 'n' to exit:");
-            if (scan.nextLine().charAt(0) == 'n') {
+            if (scanSO.nextLine().charAt(0) == 'n') {
                 break;
             }
         }
         
         finalCart.printInvoice();
+        scanSO.close();
     }
 }

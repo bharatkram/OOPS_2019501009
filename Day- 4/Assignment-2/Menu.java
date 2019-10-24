@@ -5,7 +5,7 @@ public class Menu {
         //first card
         Card card1 = new Card("xyz", "Albert", "IC Engines");
         catl.addACard(card1);
-        
+
         //second card
         Card card2 = new Card("pqr", "Henry", "Java assignments");
         catl.addACard(card2);

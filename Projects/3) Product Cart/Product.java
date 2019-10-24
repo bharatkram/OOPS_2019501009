@@ -1,4 +1,4 @@
-public class Product {
+public class Product implements Comparable<Product> {
     /**
      * field to store the product's ID.
      */
@@ -58,7 +58,7 @@ public class Product {
     }
 
     public void setQty(int qty) {
-        this.qty = qty;
+        this.qty -= qty;
     }
 
     public int getPrice() {
@@ -77,4 +77,7 @@ public class Product {
             + ", price='" + price + "'";
     }
 
+    public int compareTo(Product product) {
+        return this.name.compareTo(product.getName());
+    }
 }

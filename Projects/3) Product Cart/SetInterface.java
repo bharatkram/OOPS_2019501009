@@ -10,7 +10,7 @@ public interface SetInterface<E extends Comparable<E>> {
      *
      * @param item the element to be added to the set.
      */
-    public void add(E item);
+    public int add(E item);
 
     /**
      * function to add a list to the set.
