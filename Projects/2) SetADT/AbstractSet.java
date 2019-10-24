@@ -102,9 +102,8 @@ public abstract class AbstractSet<E extends Comparable<E>> implements SetInterfa
      * @param setA the set with which the union is to be found.
      * @return the union of this set and the current set.
      */
-    public Set<E> union(final Set<E> setA) {
+    public Set<E> union(final AbstractSet<E> setA) {
         Set<E> union = new Set<E>(setA.size() + size);
-        boolean flag = true;
         
         for (int i = 0; i < this.size(); i++) {
             union.add(this.get(i));

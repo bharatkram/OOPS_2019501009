@@ -4,29 +4,39 @@ public class User {
     String name;
     Cart cart;
     String coupon;
-    Scanner scan;
 
     public User(final String name) {
         this.name = name;
         cart = new Cart();
-        scan = new Scanner(System.in);
     }
 
     public Cart getCart() {
         return cart;
     }
 
-    public void addProduct(Product product) {
+    public void addProduct(final Product product) {
         cart.addToCart(product);
     }
 
-    public void getcouponCode() {
+    public void remove() {
+        char ch = '.';
+        do {
+            System.out.println("Enter the product you want to remove");
+        for (int i = 0; i < cart.size(); i++) {
+            System.out.println(i + ") " + cart.getProduct(i));
+        }
+        int i = Integer.parseInt(scan.nextLine());
+
+        }while (ch == '.');
+    }
+
+    public void getCouponCode() {
         System.out.println("Enter the coupon code:");
         while (true) {
             String temp = scan.nextLine();
             if (temp.equals("IND10") || temp.equals("IND20") ||
                 temp.equals("IND30") || temp.equals("IND50")) {
-                    cart.setCoupon(coupon);
+                    cart.setCoupon(temp);
                     break;
                 }
             if (temp.equals(".")) {
@@ -36,8 +46,7 @@ public class User {
         }
     }
 
-    // System.out.println("Enter the coupon code if any or '.': ");
-    //     do {
-    //         discount = applyCoupon(scan.nextLine());
-    //     } while (discount < 0);
+    public void showItems() {
+        cart.showCart();
+    }
 }

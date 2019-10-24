@@ -61,5 +61,12 @@ class Main {
         System.out.println("Union: " + sOsObj.union(sSObj));
         System.out.println("Intersection: " + sOsObj.intersection(sSObj));
 
+        Set<Integer> iOsObj1 = new Set<Integer>();
+
+        iOsObj1.add(10);
+        iOsObj1.add(2);
+        iOsObj1.add(6);
+        iOsObj1.add(8);
+        System.out.println("\n\nUnion: " + iSObj.union(iOsObj1));
     }
 }

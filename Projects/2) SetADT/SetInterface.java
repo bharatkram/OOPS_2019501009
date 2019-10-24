@@ -72,7 +72,7 @@ public interface SetInterface<E extends Comparable<E>> {
      * @param setA the set with which the union is to be found.
      * @return the union of this set and the current set.
      */
-    public Set<E> union(Set<E> setA);
+    public Set<E> union(AbstractSet<E> setA);
 
     /**
      * function to find the itersection of the current and given set.

@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Cart {
 
     Scanner scan;
-    Product[] productsTaken;
+    Set<Product> productsTaken;
     int[] qtyOfProduct;
     int size;
     String coupon;
@@ -13,10 +13,15 @@ public class Cart {
         productsTaken = new Product[20];
         qtyOfProduct = new int[20];
         size = 0;
+        coupon = ".";
     }
 
-    public void setCoupon(final String coupon) {
-        this.coupon = coupon;
+    public void setCoupon(final String c) {
+        coupon = c;
+    }
+
+    public int size() {
+        return size;
     }
 
     public void addToCart(final Product product) {
@@ -32,6 +37,13 @@ public class Cart {
             qtyOfProduct[size] += 1;
             size++;
         }
+    }
+
+    public Product getProduct(final int index) {
+        if (index >= 0 && index < size) {
+            return productsTaken[index];
+        }
+        return null;
     }
 
     public void removeFromCart(final Product product) {
@@ -65,9 +77,10 @@ public class Cart {
     }
 
     public void showCart() {
+        System.out.println("\n\nCart Details: ");
         for (int i = 0; i < size; i++) {
-            System.out.println("Item: " + productsTaken[i].getName()
-                    + "qty: " + qtyOfProduct[i] + "Price: "
+            System.out.println("\nItem: " + productsTaken[i].getName()
+                    + " qty: " + qtyOfProduct[i] + " Price: "
                     + productsTaken[i].getPrice());
         }
     }
@@ -102,14 +115,23 @@ public class Cart {
     }
 
     public void printInvoice() {
-        for (int i = 0; i < size; i++) {
-            System.out.println("Product: " + productsTaken[i]
-                    + "qty: " + qtyOfProduct[i] + "MRP: "
-                    + productsTaken[i].getPrice() + "Discount: "
-                    + productsTaken[i].getPrice() * applyCoupon()
-                    + "Amount: " + (productsTaken[i].getPrice()
-                    - productsTaken[i].getPrice() * applyCoupon()));
+        if (size == 0) {
+            System.out.println("No products in cart.\nSee you next time.");
+            return;
         }
+        int total = 0;
+        for (int i = 0; i < size; i++) {
+            total += qtyOfProduct[i] * (productsTaken[i].getPrice()
+                    - productsTaken[i].getPrice() * applyCoupon());
+            System.out.println(" Product: " + productsTaken[i]
+                    + " qty: " + qtyOfProduct[i] + " MRP: "
+                    + productsTaken[i].getPrice() + " Discount: "
+                    + productsTaken[i].getPrice() * applyCoupon()
+                    + " Amount: " + (productsTaken[i].getPrice()
+                    - productsTaken[i].getPrice() * applyCoupon())
+                    * qtyOfProduct[i]);
+        }
+        System.out.println("total = " + total);
     }
 
 }
