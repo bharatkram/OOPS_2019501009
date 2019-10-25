@@ -24,6 +24,8 @@ public class Main {
                 System.out.println("Enter only numbers:");
             }
         }
+
+        game.play();
         
         scan.close();
     }

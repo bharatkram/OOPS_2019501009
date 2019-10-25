@@ -12,5 +12,7 @@ public class Game {
         players.add(new Player(name));
     }
 
-    
+    public void game() {
+        for (int i = 0; i < players.)
+    }
 }

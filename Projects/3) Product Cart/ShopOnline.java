@@ -12,7 +12,7 @@ public class ShopOnline {
 
     public void setCatalogs() {
 
-        company[0] = new ProductCatalog("Apple");
+        company[0] = new ProductCatalog("Mobile Accessories");
         
         company[0].addProductToCatalog(new Product(101, "phone", 5, 50000));
         company[0].addProductToCatalog(new Product(102, "charger", 10, 1000));
@@ -23,7 +23,7 @@ public class ShopOnline {
 
         // company[0].showCatalog();
 
-        company[1] = new ProductCatalog("Allen Solly");
+        company[1] = new ProductCatalog("Clothing");
 
         company[1].addProductToCatalog(new Product(201, "Shirt", 20, 2500));
         company[1].addProductToCatalog(new Product(202, "T-Shirt", 20, 1000));
