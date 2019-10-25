@@ -11,6 +11,7 @@ public class Set<E extends Comparable<E>> extends AbstractSet<E> {
      * function to add the item to the set.
      *
      * @param item the element to be added to the set.
+     * @return 0 if the product is not present in the cart, else 1.
      */
     public int add(final E item) {
         if (!this.contains(item)) {

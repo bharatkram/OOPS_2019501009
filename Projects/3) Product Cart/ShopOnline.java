@@ -116,7 +116,7 @@ public class ShopOnline {
             System.out.println("Do you want to remove any item from your cart?"
                     + " y/n");
             if (scanSO.nextLine().charAt(0) == 'y') {
-                if (s.user.getCart().productsTaken.size() == 0) {
+                if (s.user.getCart().productsTaken().size() == 0) {
                     System.out.println("No items in cart");
                 } else {
                     s.user.remove();

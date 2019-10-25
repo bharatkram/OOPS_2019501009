@@ -23,7 +23,7 @@ public class User {
         char ch = ' ';
         do {
             System.out.println("Enter the product you want to remove");
-            for (int i = 0; i < cart.productsTaken.size(); i++) {
+            for (int i = 0; i < cart.productsTaken().size(); i++) {
                 System.out.println((i + 1) + ") " + cart.getProduct(i).getName()
                         + "\tqty: " + cart.getQuantity(i));
         }
