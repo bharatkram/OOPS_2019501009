@@ -1,14 +1,20 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
-public class Main {
+class Main {
 
-    public static void main(String[] args) {
+    /**
+     * the main function.
+     *
+     * @param args parameters of the main function.
+     */
+    public static void main(final String[] args) {
         Scanner scan = new Scanner(System.in);
         String numberOfPlayers;
         Game game;
-        
+
         System.out.println("Enter the number of players:");
-        while (true) {    
+        while (true) {
             try {
                 numberOfPlayers = scan.nextLine();
                 if (numberOfPlayers.equals("")) {
@@ -16,17 +22,18 @@ public class Main {
                 }
                 game = new Game(Integer.parseInt(numberOfPlayers));
                 break;
-            }
-            catch(NullInputException nie) {
+            } catch (NullInputException nie) {
                 System.out.println(nie.getMessage());
-            }
-            catch(NumberFormatException nfe) {
+            } catch (NumberFormatException nfe) {
                 System.out.println("Enter only numbers:");
             }
         }
 
-        game.play();
-        
+        ArrayList<Player> players = game.play(
+                    Integer.parseInt(numberOfPlayers));
+
+        players.forEach((player) -> System.out.println(player));
+
         scan.close();
     }
 }

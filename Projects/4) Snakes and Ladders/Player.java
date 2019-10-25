@@ -48,6 +48,18 @@ public class Player implements Comparable<Player> {
     }
 
     /**
+     * function to add the count shown on die to the position
+     * of the player.
+     *
+     * @param count the count shown on the die.
+     */
+    public void addDieCount(final int count) {
+        if (this.pos + count <= 100) {
+            this.pos += count;
+        }
+    }
+
+    /**
      * compareTo method to compare the player's position and rank them
      * accordingly.
      *
@@ -56,5 +68,14 @@ public class Player implements Comparable<Player> {
      */
     public int compareTo(final Player that) {
         return this.pos - that.getPos();
+    }
+
+    /**
+     * function to print the fields of the player.
+     *
+     * @return the fields of the class in string format.
+     */
+    public String toString() {
+        return ("Name: " + this.name + "\tPosition: " + this.pos);
     }
 }
